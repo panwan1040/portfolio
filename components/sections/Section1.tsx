@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
 
 const Section1 = () => {
   return (
@@ -10,11 +10,11 @@ const Section1 = () => {
           <h1 className="text-4xl md:text-5xl font-bold text-gray-800  ">
             Panwan Meansiri
           </h1>
-          <p className="text-lg text-gray-600 mt-4 font-bold">
+          {/* <p className="text-lg text-gray-600 mt-4 font-bold">
             "Why did the server laugh?"
             <br />
             <span className="text-gray-500 font-bold">"Because it got a request!"</span>
-          </p>
+          </p> */}
 
           <hr className="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700"></hr>
 

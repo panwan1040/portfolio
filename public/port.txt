@@ -1,0 +1,122 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <iomanip> 
+
+void printTextArtWithDetails(
+    const std::vector<std::string>& art, 
+    const std::vector<std::pair<std::string, std::string>>& details) 
+{
+    size_t maxRows = std::max(art.size(), details.size());
+    size_t detailIndex = 0;
+
+    for (size_t i = 0; i < maxRows; ++i) {
+        if (i < art.size()) {
+            std::cout << art[i];
+        } else {
+            std::cout << std::setw(32) << " "; 
+        }
+
+
+        if (detailIndex < details.size()) {
+            std::cout << "\t\t" << std::setw(15) << std::left 
+                      << details[detailIndex].first << ": \t" 
+                      << details[detailIndex].second;
+            ++detailIndex;
+        }
+
+        std::cout << "\n";
+    }
+
+    while (detailIndex < details.size()) {
+        std::cout << std::setw(32) << " " // ช่องว่างสำหรับรูป
+                  << "\t\t" << std::setw(15) << std::left 
+                  << details[detailIndex].first << ": \t" 
+                  << details[detailIndex].second << "\n";
+        ++detailIndex;
+    }
+
+    std::cout << "\n";
+}
+
+void printSection(const std::string& section, const std::vector<std::string>& items) {
+    // std::cout << "\n// ============================================================\n";
+    std::cout << "*** " << section << " ***\n";
+    // std::cout << "// ============================================================\n";
+    for (const auto& item : items) {
+        std::cout << item << "\n";
+    }
+    std::cout << "\n";
+}
+
+int main() {
+
+    std::vector<std::string> textArt = {
+        "****/*////////////////////////",
+        "/////////////%&%%%////////////",
+        "/////////%&&&&&&&&&&&/////////",
+        "/////////&&**,,,,/&&&&////////",
+        "/////////#**,*******&/////////",
+        "/////////*,,,,,**,,*//////////",
+        "///////////,,,,,***///////////",
+        "////////////*****/////////////",
+        "//////////(/,***//*(//////////",
+        "////%%%%/(((*,,*,,&%(%(%%%%///",
+        "/%%%%%%/&//(*,.,,,/&//(%%%%%%%",
+        "%%%%%%%*&**//,...,/&//&/%%%%%%",
+        "%%%%%%%***/,/,...,*&*#&/%%%%%%",
+        "%%%%%%%%*#&*/,.,.,*&**&*%%%%%%",
+        "%%%%%%%%*,&/(,...,*&**&*%%%%%%"
+    };
+
+
+    std::vector<std::pair<std::string, std::string>> details = {
+        {"Name", "PANWAN MEANSIRI"},
+        {"Role", "Website Developer"},
+        {"Location", "Lop Buri, Thailand"},
+        {"Phone", "0822571321"},
+        {"Email", "panwan.21st@gmail.com"},
+        {"GitHub", "https://github.com/panwan1040"},
+		{"",""},
+		{"",""},
+		{"SKILLS","C++"},
+		{"","Python"},
+		{"","JavaScript"},
+		{"","React"},
+		{"","PHP"},
+		{"","SQL"},
+		{"","Git"},
+    };
+
+
+    printTextArtWithDetails(textArt, details);
+
+
+    printSection("EDUCATION", {
+        "King Mongkut's University of Technology North Bangkok",
+        "\tDegree: Information Technology (2019 - 2023)",
+        "Lopburi Technical College",
+        "\tField: Electronics"
+    });
+
+    printSection("INTERNSHIPS", {
+        "Website Developer at Synerry Corporation (Thailand) Co., Ltd.",
+        "\t* Created subsystems for newsletters, FAQ, and admin control.",
+        "\t* Automated email systems and enhanced admin features.",
+        "\t* Troubleshot API integration and improved system performance."
+    });
+
+    printSection("OTHER ASSIGNMENTS DURING INTERNSHIP", {
+        "* Developed custom form management systems for the Ministry of Culture.",
+        "* Configured servers for hosting applications using IIS.",
+        "* Automated tasks with Jenkins under supervision.",
+        "* Built websites for government agencies (M-CULTURE, ERC).",
+        "* Managed APIs with documentation for ASEAN Cultural Center."
+    });
+
+    printSection("COURSES", {
+        "SQL Intermediate, sololearn (October 2024)"
+    });
+
+    return 0;
+}
