@@ -15,7 +15,9 @@ const CppPlayground = () => {
   useEffect(() => {
     const loadCodeFromFile = async () => {
       try {
-        const response = await fetch("/port.txt"); // URL ของไฟล์ port.txt
+        const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+        const fileName = isMobile ? "/port-m.txt" : "/port.txt"; // ใช้ไฟล์ที่เหมาะสม
+        const response = await fetch(fileName); 
         if (!response.ok) {
           throw new Error("Failed to fetch the file");
         }
@@ -37,6 +39,7 @@ const CppPlayground = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "x-api-secret": process.env.NEXT_PUBLIC_API_SECRET || '',
         },
         body: JSON.stringify({ code }),
       });

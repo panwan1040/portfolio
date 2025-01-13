@@ -1,0 +1,97 @@
+#include <iostream>
+#include <vector>
+#include <string>
+
+void printTextArt(const std::vector<std::string>& art) {
+    for (const auto& line : art) {
+        std::cout << line << "\n";
+    }
+    std::cout << "\n";
+}
+
+void printDetails(const std::vector<std::pair<std::string, std::string>>& details) {
+    for (const auto& detail : details) {
+        std::cout << detail.first << ": " << detail.second << "\n";
+    }
+    std::cout << "\n";
+}
+
+void printSection(const std::string& section, const std::vector<std::string>& items) {
+    std::cout << "*** " << section << " ***\n";
+    for (const auto& item : items) {
+        std::cout << item << "\n";
+    }
+    std::cout << "\n";
+}
+
+int main() {
+    // Text Art for mobile-friendly display
+    std::vector<std::string> textArt = {
+        "****/*////////////////////////",
+        "/////////////%&%%%////////////",
+        "/////////%&&&&&&&&&&&/////////",
+        "/////////&&**,,,,/&&&&////////",
+        "/////////#**,*******&/////////",
+        "/////////*,,,,,**,,*//////////",
+        "///////////,,,,,***///////////",
+        "////////////*****/////////////",
+        "//////////(/,***//*(//////////",
+        "////%%%%/(((*,,*,,&%(%(%%%%///",
+        "/%%%%%%/&//(*,.,,,/&//(%%%%%%%",
+        "%%%%%%%*&**//,...,/&//&/%%%%%%",
+        "%%%%%%%***/,/,...,*&*#&/%%%%%%",
+        "%%%%%%%%*#&*/,.,.,*&**&*%%%%%%",
+        "%%%%%%%%*,&/(,...,*&**&*%%%%%%"
+    };
+
+    // Personal details
+    std::vector<std::pair<std::string, std::string>> details = {
+        {"Name", "PANWAN MEANSIRI"},
+        {"Role", "Website Developer"},
+        {"Location", "Lop Buri, Thailand"},
+        {"Phone", "0822571321"},
+        {"Email", "panwan.21st@gmail.com"},
+        {"GitHub", "https://github.com/panwan1040"},
+        {"Skills", "C++, Python, JavaScript, React, PHP, SQL, Git"}
+    };
+
+    // Education
+    std::vector<std::string> education = {
+        "King Mongkut's University of Technology North Bangkok",
+        "\tDegree: Information Technology (2019 - 2023)",
+        "Lopburi Technical College",
+        "\tField: Electronics"
+    };
+
+    // Internships
+    std::vector<std::string> internships = {
+        "Website Developer at Synerry Corporation (Thailand) Co., Ltd.",
+        "\t* Created subsystems for newsletters, FAQ, and admin control.",
+        "\t* Automated email systems and enhanced admin features.",
+        "\t* Troubleshot API integration and improved system performance."
+    };
+
+    // Other assignments
+    std::vector<std::string> assignments = {
+        "* Developed custom form management systems for the Ministry of Culture.",
+        "* Configured servers for hosting applications using IIS.",
+        "* Automated tasks with Jenkins under supervision.",
+        "* Built websites for government agencies (M-CULTURE, ERC).",
+        "* Managed APIs with documentation for ASEAN Cultural Center."
+    };
+
+    // Courses
+    std::vector<std::string> courses = {
+        "SQL Intermediate, sololearn (October 2024)"
+    };
+
+    // Display content
+    printTextArt(textArt);
+    printDetails(details);
+    printSection("EDUCATION", education);
+    printSection("INTERNSHIPS", internships);
+    printSection("OTHER ASSIGNMENTS DURING INTERNSHIP", assignments);
+    printSection("COURSES", courses);
+
+    return 0;
+}
