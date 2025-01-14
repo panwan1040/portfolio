@@ -6,7 +6,7 @@ import { Play } from "lucide-react";
 
 import Editor from "@monaco-editor/react";
 
-const CppPlayground = () => {
+const Section2 = () => {
   const [code, setCode] = useState(""); // เริ่มต้นเป็นค่าว่าง
   const [output, setOutput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -17,7 +17,7 @@ const CppPlayground = () => {
       try {
         const isMobile = /Mobi|Android/i.test(navigator.userAgent);
         const fileName = isMobile ? "/port-m.txt" : "/port.txt"; // ใช้ไฟล์ที่เหมาะสม
-        const response = await fetch(fileName); 
+        const response = await fetch(fileName);
         if (!response.ok) {
           throw new Error("Failed to fetch the file");
         }
@@ -39,7 +39,7 @@ const CppPlayground = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "x-api-secret": process.env.NEXT_PUBLIC_API_SECRET || '',
+          "x-api-secret": process.env.NEXT_PUBLIC_API_SECRET || "",
         },
         body: JSON.stringify({ code }),
       });
@@ -97,12 +97,13 @@ const CppPlayground = () => {
         </div>
       </CardContent>
 
-      <div className="p-4 bg-gray-100 rounded-lg shadow-md">
-        <p className="text-lg mb-4 font-bold text-gray-800">
-          You can also check out another C++ project of mine that I started back
-          in 2019 when I first began programming. It's a simple electronic
-          calculator, and you can download the demo (exe file) for Windows{" "}
-          
+      {output ? (
+        <div className="p-4 bg-gray-100 rounded-lg shadow-md">
+          <p className="text-lg mb-4 font-bold text-gray-800">
+            You can also check out another C++ project of mine that I started
+            back in 2019 when I first began programming. It's a simple
+            electronic calculator, and you can download the demo (exe file) for
+            Windows{" "}
             <a
               href="https://github.com/panwan1040/cpp_miniproject_electronic_cal"
               className=" font-bold text-gray-600 hover:underline hover:text-gray-800 "
@@ -111,10 +112,9 @@ const CppPlayground = () => {
             >
               here
             </a>
-          
-          .
-        </p>
-        {/* <p className="text-sm text-gray-500">
+            .
+          </p>
+          {/* <p className="text-sm text-gray-500">
           Feel free to explore the code on my GitHub as well:
           <a
             href="https://github.com/panwan1040/cpp_miniproject_electronic_cal"
@@ -125,9 +125,12 @@ const CppPlayground = () => {
             cpp_miniproject_electronic_cal
           </a>
         </p> */}
-      </div>
+        </div>
+      ) : (
+        <></>
+      )}
     </Card>
   );
 };
 
-export default CppPlayground;
+export default Section2;
